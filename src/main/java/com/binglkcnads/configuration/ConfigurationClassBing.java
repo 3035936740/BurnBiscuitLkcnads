@@ -46,7 +46,8 @@ public class ConfigurationClassBing implements WebMvcConfigurer {
     @Value("${proxy.nginx-static-resource.name}")
     private String name;
 
-    // 这里是反向代理
+    // 这里是反向代理 要开自行解注释了(
+    /*
     @Bean
     public ServletRegistrationBean servletRegistrationBean() {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new ProxyServlet(), url);
@@ -55,6 +56,7 @@ public class ConfigurationClassBing implements WebMvcConfigurer {
         servletRegistrationBean.addInitParameter(ProxyServlet.P_LOG, String.valueOf(true));
         return servletRegistrationBean;
     }
+    */
 
     // 这个是对XSS的过滤
     @Bean
