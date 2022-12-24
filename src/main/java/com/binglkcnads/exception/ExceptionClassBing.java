@@ -148,6 +148,13 @@ public class ExceptionClassBing {
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 500,"redis序列化异常");
     }
+
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    @ResponseBody
+    public Map<String,Object> illegalArgument(IllegalArgumentException e){
+        log.error(e.getMessage());
+        return ErrResult.failedWith(new Date(), 500,"非法数据异常");
+    }
     // 统一处理异常
     /*@ExceptionHandler(value = Exception.class)
     public String exceptionPage(){

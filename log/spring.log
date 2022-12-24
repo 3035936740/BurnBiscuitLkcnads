@@ -1,2 +1,38 @@
 2022-12-25 02:09:12.196  INFO 18084 --- [restartedMain] com.binglkcnads.BingLkcnadsApplication   : Starting BingLkcnadsApplication using Java 17.0.2 on DESKTOP-43CB6F4 with PID 18084 (E:\study\Bing-Lkcnads\target\classes started by Bing in E:\study\Bing-Lkcnads)
 2022-12-25 02:09:12.251  INFO 18084 --- [restartedMain] com.binglkcnads.BingLkcnadsApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-12-25 02:09:12.595  INFO 18084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-25 02:09:12.596  INFO 18084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-25 02:09:16.243  INFO 18084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-12-25 02:09:16.246  INFO 18084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-12-25 02:09:16.296  INFO 18084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+2022-12-25 02:09:18.065  INFO 18084 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-12-25 02:09:18.068  INFO 18084 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.0].
+2022-12-25 02:09:18.068  INFO 18084 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-12-25 02:09:18.069  INFO 18084 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-12-25 02:09:18.237  INFO 18084 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1q  5 Jul 2022]
+2022-12-25 02:09:18.276  INFO 18084 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-25 02:09:18.278  INFO 18084 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-25 02:09:18.406  INFO 18084 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-25 02:09:18.406  INFO 18084 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5808 ms
+2022-12-25 02:09:18.409  INFO 18084 --- [restartedMain] c.b.c.ConfigurationClassBing             : Bean初始化
+2022-12-25 02:09:18.746  INFO 18084 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-12-25 02:09:20.212  INFO 18084 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-12-25 02:09:20.474  INFO 18084 --- [restartedMain] com.binglkcnads.common.filter.XssFilter  : Xss初始化
+2022-12-25 02:09:22.174  INFO 18084 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-12-25 02:09:23.480  INFO 18084 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-25 02:09:23.509  INFO 18084 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-12-25 02:09:23.677  INFO 18084 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-12-25 02:09:23.680  INFO 18084 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [43.143.35.200:5672]
+2022-12-25 02:09:23.852  INFO 18084 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#3d0e4678:0/SimpleConnection@1b278323 [delegate=amqp://Bing@43.143.35.200:5672/msg, localPort= 2654]
+2022-12-25 02:09:24.764  INFO 18084 --- [restartedMain] com.binglkcnads.BingLkcnadsApplication   : Started BingLkcnadsApplication in 13.51 seconds (JVM running for 14.742)
+2022-12-25 02:09:25.358  INFO 18084 --- [RMI TCP Connection(2)-192.168.0.104] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-25 02:09:25.358  INFO 18084 --- [RMI TCP Connection(2)-192.168.0.104] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-25 02:09:25.360  INFO 18084 --- [RMI TCP Connection(2)-192.168.0.104] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-12-25 02:09:42.413  INFO 18084 --- [http-nio-8081-exec-3] c.b.controller.ControllerClassBing       : ============================
+2022-12-25 02:09:42.413  INFO 18084 --- [http-nio-8081-exec-3] c.b.controller.ControllerClassBing       : 访问前端的用户页面
+2022-12-25 02:09:42.415  INFO 18084 --- [http-nio-8081-exec-3] c.b.controller.ControllerClassBing       : 来自IP地址:127.0.0.1
+2022-12-25 02:09:42.415  INFO 18084 --- [http-nio-8081-exec-3] c.b.controller.ControllerClassBing       : ============================
+2022-12-25 02:13:36.429  INFO 18084 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-12-25 02:13:36.443  INFO 18084 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-12-25 02:13:36.459  INFO 18084 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-12-25 02:13:36.486  INFO 18084 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.

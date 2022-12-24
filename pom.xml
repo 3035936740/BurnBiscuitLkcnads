@@ -43,7 +43,7 @@
         <!--<quasar.version>0.7.10</quasar.version>-->
         <!-- ==========================#POM配置项#========================== -->
         <!-- 热部署是否启用 -->
-        <hot.deploy>true</hot.deploy>
+        <hot.deploy>false</hot.deploy>
     </properties>
     <dependencies>
         <dependency>
@@ -326,7 +326,7 @@
                 <springboot.path.log>log</springboot.path.log>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
         </profile>
         <profile>
@@ -342,7 +342,7 @@
                 <springboot.path.log>log</springboot.path.log>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
