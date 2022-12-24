@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.example</groupId>
+    <artifactId>Bing-Lkcnads</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>Bing-Lkcnads</name>
+    <description>Bing-Lkcnads</description>
+    <properties>
+        <!-- 版本 -->
+        <java.version>17</java.version>
+        <fastjson2.version>2.0.21</fastjson2.version>
+        <fastjson1.version>2.0.21</fastjson1.version>
+        <jwt.version>0.9.1</jwt.version>
+        <druid.version>1.2.12</druid.version>
+        <springboot.druid.version>1.2.11</springboot.druid.version>
+        <validator.version>6.0.18.Final</validator.version>
+        <proxy.servlet.version>1.12.1</proxy.servlet.version>
+        <mybatis.version>2.2.2</mybatis.version>
+        <spring.boot.devtools.version>2.7.5</spring.boot.devtools.version>
+        <commons.lang3.version>3.12.0</commons.lang3.version>
+        <pagehelper.version>5.3.2</pagehelper.version>
+        <poi.ooxml.version>5.2.3</poi.ooxml.version>
+        <commons.pool2.version>2.11.1</commons.pool2.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <user.agent.utils.version>1.21</user.agent.utils.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <snake.yaml.version>1.33</snake.yaml.version>
+        <commons-file.upload.version>1.4</commons-file.upload.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <jackson-databind.version>2.13.4.2</jackson-databind.version>
+        <validation.version>2.7.5</validation.version>
+        <springboot.starter.actuator.version>2.7.5</springboot.starter.actuator.version>
+        <jwt.auth.version>4.2.1</jwt.auth.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+        <!--<quasar.version>0.7.10</quasar.version>-->
+        <!-- ==========================#POM配置项#========================== -->
+        <!-- 热部署是否启用 -->
+        <hot.deploy>true</hot.deploy>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 应用监控 -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${springboot.starter.actuator.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${springboot.druid.version}</version>
+        </dependency>
+        <!-- 6.0.18稳定 -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${validator.version}</version>
+        </dependency>
+        <!-- 反向代理 -->
+        <dependency>
+            <groupId>org.mitre.dsmiley.httpproxy</groupId>
+            <artifactId>smiley-http-proxy-servlet</artifactId>
+            <version>${proxy.servlet.version}</version>
+        </dependency>
+        <!-- 阿里JSON解析器 -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson2.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson1.version}</version>
+        </dependency>
+
+        <!-- Token生成与解析-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${jwt.auth.version}</version>
+        </dependency>
+        <!-- springboot热部署开发 -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>${spring.boot.devtools.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!-- commons-lang3工具类 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
+        </dependency>
+        <!-- MyBatis分页插件 -->
+        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.version}</version>
+        </dependency>
+        <!-- excel工具 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.ooxml.version}</version>
+        </dependency>
+        <!-- pool 对象池 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons.pool2.version}</version>
+        </dependency>
+        <!-- servlet包 -->
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- 解析客户端操作系统、浏览器等 -->
+        <!-- https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>${user.agent.utils.version}</version>
+        </dependency>
+        <!-- Jaxb -->
+        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
+        </dependency>
+        <!-- yml解析器 -->
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snake.yaml.version}</version>
+        </dependency>
+        <!-- 文件上传工具类 -->
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-file.upload.version}</version>
+        </dependency>
+        <!-- io常用工具类 -->
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <!-- JSON工具类 -->
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <!-- 自定义验证注解 -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${validation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- BCrypt加密 -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>${jbcrypt.version}</version>
+        </dependency>
+
+        <!--协程框架-->
+        <!-- https://mvnrepository.com/artifact/co.paralleluniverse/quasar-core -->
+        <!--<dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>quasar-core</artifactId>
+            <version>${quasar.version}</version>
+            <classifier>jdk8</classifier>
+        </dependency>-->
+
+        <!-- JPA,因为有了MyBatis不需要了 -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>-->
+        <!-- 这个是RabbitMQ -->
+        <!--<dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit-test</artifactId>
+            <scope>test</scope>
+        </dependency>-->
+        <!-- 这个是安全验证相关 -->
+        <!--<dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>${hot.deploy}</fork><!-- 如果没有该配置，热部署的devtools不生效 -->
+                    <addResources>true</addResources>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                    <useDefaultDelimiters>true</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>Bing_Lkcnads</finalName>
+    </build>
+    <profiles>
+        <profile>
+            <!-- 需要更改环境就将activeByDefault改为false或者true -->
+            <!-- 开发环境 -->
+            <id>dev_env</id>
+            <properties>
+                <profile.active>开发环境</profile.active>
+                <springboot.server.port>8081</springboot.server.port>
+                <springboot.server.ip>43.143.35.200</springboot.server.ip>
+                <springboot.server.page.cache>false</springboot.server.page.cache>
+                <sql.username>Bing</sql.username>
+                <sql.password>bkhra571</sql.password>
+                <springboot.path.log>log</springboot.path.log>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!-- 发布环境 -->
+            <id>pro_env</id>
+            <properties>
+                <profile.active>发布环境</profile.active>
+                <springboot.server.port>6680</springboot.server.port>
+                <springboot.server.ip>localhost</springboot.server.ip>
+                <springboot.server.page.cache>true</springboot.server.page.cache>
+                <sql.username>root</sql.username>
+                <sql.password>bkhra571</sql.password>
+                <springboot.path.log>log</springboot.path.log>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!-- 测试环境 -->
+            <id>test_env</id>
+            <properties>
+                <profile.active>测试环境</profile.active>
+                <springboot.server.port>8081</springboot.server.port>
+                <springboot.server.ip>localhost</springboot.server.ip>
+                <springboot.server.page.cache>true</springboot.server.page.cache>
+                <sql.username>root</sql.username>
+                <sql.password>bkhra571</sql.password>
+                <springboot.path.log>log</springboot.path.log>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+</project>

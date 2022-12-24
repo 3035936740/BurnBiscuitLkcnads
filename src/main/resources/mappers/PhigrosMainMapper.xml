@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.binglkcnads.mappers.PhigrosMainMapper">
+    <resultMap id="PhigrosMainData" type="com.binglkcnads.dao.PhigrosMainData">
+        <id property="song_id" column="song_id"/>
+        <result property="song_name" column="song_name"/>
+        <result property="song_illustration_url" column="song_illustration_url"/>
+        <result property="song_audio_url" column="song_audio_url"/>
+        <result property="artist" column="artist"/>
+        <result property="illustration" column="illustration"/>
+        <result property="duration" column="duration"/>
+        <result property="bpm" column="bpm"/>
+        <result property="chapter" column="chapter"/>
+        <association property="rating" column="chart_rating" javaType="com.binglkcnads.dao.chart.ChartRating"
+        select="com.binglkcnads.mappers.PhigrosMainMapper.findByRatingChart"/>
+        <association property="note" column="chart_note_count" javaType="com.binglkcnads.dao.chart.ChartNote"
+        select="com.binglkcnads.mappers.PhigrosMainMapper.findByNoteChart"/>
+        <association property="design" column="chart_design" javaType="com.binglkcnads.dao.chart.ChartDesign"
+        select="com.binglkcnads.mappers.PhigrosMainMapper.findByDesignChart"/>
+    </resultMap>
+
+    <select id="findBySong" resultMap="PhigrosMainData">
+        select *
+        from phigros_table_new
+        <where>
+            <if test="id != null">
+                and song_id IN
+                <foreach item="item" collection="id" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="name != null">
+              and song_name like concat('%', #{name},'%')
+            </if>
+            <if test="name == null and id == null">
+              and 1
+            </if>
+            <if test="name != null and id != null">
+               and song_id = 0
+            </if>
+        </where>
+    </select>
+
+    <select id="findBySongSingleWhereName" resultMap="PhigrosMainData">
+        select *
+        from phigros_table_new where song_name = #{name};
+    </select>
+
+    <select id="findBySongSingleWhereId" resultMap="PhigrosMainData">
+        select *
+        from phigros_table_new where song_id = ${id};
+    </select>
+
+    <resultMap id="RatingData" type="com.binglkcnads.dao.PhigrosRating">
+        <association property="song_list" column="rating_id" javaType="com.binglkcnads.dao.PhigrosMainData"
+                     select="com.binglkcnads.mappers.PhigrosMainMapper.findBySongSingleWhereId"/>
+    </resultMap>
+
+    <select id="findByRatingPhigrosRating" resultMap="RatingData">
+        select *
+        from chart_rating
+        where EZ between #{rating1} and #{rating2} or
+              HD between #{rating1} and #{rating2} or
+            `IN` between #{rating1} and #{rating2} or
+              AT between #{rating1} and #{rating2} or
+              LG between #{rating1} and #{rating2} or
+              SP between #{rating1} and #{rating2};
+    </select>
+</mapper>

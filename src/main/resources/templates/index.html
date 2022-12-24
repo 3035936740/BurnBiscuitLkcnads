@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <script src="/static_resource/js/vue.global.js"></script>
+</head>
+<body>
+    <div style="text-align: center;">
+      <div style="font-size: 84px">这个是主页哦</div>
+      <div style="font-size: 64px">这里什么也没有~</div>
+        <a id="v" href="./manual/page">{{ str }}</a>
+    </div>
+
+    <script>
+        const vue = {
+            data(){
+                return{
+                    str:""
+                }
+            },
+            methods:{
+                delay(){
+                    setTimeout(()=>{
+                        this.str="点击跳转";
+                    },5000)
+                }
+            },
+            mounted(){
+                this.delay()
+            }
+        };
+        Vue.createApp(vue).mount("#v");
+    </script>
+</body>
+</html>

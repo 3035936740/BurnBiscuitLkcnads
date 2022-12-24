@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这个是说明书啦</title>
+    <style>
+        .class0{
+            width: 80vw;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .hr-dashed2 {
+            border: 0;
+            border-top: 2px dashed #a2a9b6;
+        }
+        .hr-solid {
+             border: 0;
+             border-top: 1px solid #d0d0d5;
+             width: 95%;
+         }
+
+
+    </style>
+    <script src="/static_resource/js/vue.global.js"></script>
+    <script src="/static_resource/js/axios.min.js"></script>
+</head>
+<body>
+
+    <div class="class0">
+        页面没什么时间弄的特别精美(^^;<br/>
+        只能尽力了,这里是api怎么用相关的(没错的话!)
+    </div>
+    <hr class="hr-dashed2">
+<pre style="font-size: 20px;font-weight: bold;">
+    这个是窥探到烧饼的精神世界的(x
+    <a href="/actuator">/actuator</a>
+</pre><hr class="hr-dashed2">
+    <pre style="font-size: 20px;font-weight: bold;">
+    好啦好啦以下是 肥鸽肉丝 的一些api调用的例子<hr class="hr-solid"/> -- <span style="font-size: 22px;">查询曲目(Get请求)</span>
+    查询全部的曲目:<a href="/api/pgr/findBySong">/api/pgr/findBySong</a><div style="color: #d14529;font-size: 10px;">      ↑这个非常不推荐!没有缓存的情况下查询十分的慢!</div>
+    查询指定id曲目:<a href="/api/pgr/findBySong?id=39">/api/pgr/findBySong?id=39</a>
+    查询指定名称曲目:<a href="/api/pgr/findBySong?name=rr">/api/pgr/findBySong?name=rr</a><hr class="hr-solid"/> -- <span style="font-size: 22px;">定数根据查询曲目(Get请求)</span>
+    查询指定的定数:<a href="/api/pgr/findByRating?rating1=15.1">/api/pgr/findByRating?rating1=15.1</a>
+    查询[rating1,rating2]的定数:<a href="/api/pgr/findByRating?rating1=15.1&rating2=15.3">/api/pgr/findByRating?rating1=15.1&rating2=15.3</a><hr class="hr-solid"/> -- <span style="font-size: 22px;">查询别名(Get请求)</span>
+    查询别名:<a href="/api/pgr/findByAliasToMain?id=156">/api/pgr/findByAliasToMain?id=156</a><br/>
+    <div style="color: hotpink">-注-</div> 改后只可通过id查询了,怎么用?通过<a href="/api/pgr/findBySong">/api/pgr/findBySong</a>这个api(查询曲目)获取id再获取曲目的别名<hr class="hr-solid"/> -- <span style="font-size: 22px;">全曲查询与别名缝合体(Get请求)</span>
+    查询全部曲目与别名:<a href="/api/pgr/findBySongWrapper">/api/pgr/findBySongWrapper</a><div style="color: #d14529;font-size: 10px;">      ↑这个非常不推荐!查询十分的慢!</div>
+    查询指定id曲目与别名:<a href="/api/pgr/findBySongWrapper?id=39">/api/pgr/findBySongWrapper?id=39</a>
+    查询指定名称曲目与别名:<a href="/api/pgr/findBySongWrapper?name=rr">/api/pgr/findBySongWrapper?name=rr</a>
+
+    <div style="color: deeppink;font-size: 12px;">      ※这个请求没有对 <u>别名</u> 做缓存,但是是对 <u>曲目列表本身</u> 做了缓存的,查询起来可能会比<a href="/api/pgr/findBySong">/api/pgr/findBySong</a>慢一点,做了对比全曲 有缓存 <u>曲目列表本身</u> 的情况下 慢7s</div><hr class="hr-solid"/> -- <span style="font-size: 22px;">全曲查询与别名缝合体但是带了缓存(Get请求)</span>
+    查询全部曲目与别名:<a href="/api/pgr/findBySongWrapperCache">/api/pgr/findBySongWrapperCache</a><div style="color: #d14529;font-size: 10px;">      ↑这个非常不推荐!没有缓存的情况下查询十分的慢!</div>
+    查询指定id曲目与别名:<a href="/api/pgr/findBySongWrapperCache?id=39">/api/pgr/findBySongWrapperCache?id=39</a>
+    查询指定名称曲目与别名:<a href="/api/pgr/findBySongWrapperCache?name=rr">/api/pgr/findBySongWrapperCache?name=rr</a>
+
+    <div style="color: deeppink;font-size: 12px;">      ※这个首次查询会比<a href="/api/pgr/findBySong">/api/pgr/findBySong</a>慢上一些,但是它是带有缓存的,如果没有用户添加别名之类的,烧饼一个人添加的情况下,可以使用这个w,第二次查询会比<a href="/api/pgr/findBySongWrapperCache">/api/pgr/findBySongWrapper</a>快得多</div>
+    <hr class="hr-solid"/> -- <span style="font-size: 22px;">添加别名(Post请求)</span>
+    <a href="#">/api/pgr/addAlias</a>
+    name和alias(没有模糊查询)必选
+    JSON:
+    {
+        "name":"曲目名称(或别名)",
+        "alias":"添加的别名"
+    }
+    例子:
+    {
+        "name":"ρars/ey",
+        "alias":"pars/ey"
+    }
+
+    <div style="color: hotpink">-补充-</div>    下面是get版本的(Get请求)
+    (1).给一个曲目id为0的的曲目添加一个叫做test的别名:
+    <a href="/api/pgr/addAliasGet?alias=test&song_id=0">/api/pgr/addAliasGet?alias=test&song_id=0</a>
+    (2).给一个叫做 别名不存在(name) [对应id为0的测试曲目] 的曲目添加一个test别名:
+    <a href="/api/pgr/addAliasGet?alias=test&name=别名不存在">/api/pgr/addAliasGet?alias=test&name=别名不存在</a>
+
+    <div style="color: #d14529">    -[推荐用(1)]-</div>
+    [具体用法为:通过调用<a href="/api/pgr/findBySong">/api/pgr/findBySong</a>这个api获取曲目的id在将此id传入song_id中]
+    [因为添加别名遇到了一组数据并不好处理,得分两步来]
+<hr class="hr-solid"/> -- <span style="font-size: 22px;">删除别名(Delete请求)</span>
+    <a href="#">/api/pgr/delAlias</a>
+    id或alias(没有模糊查询)
+    JSON:
+    {
+        "id":别名的id,
+        "alias":"别名的名称"
+    }
+
+    例子1(通过别名删除别名):
+    {
+        "alias":"test"
+    }
+
+    例子2(通过别名id删除别名):
+    {
+        "id":50
+    }
+
+    <div style="color: hotpink">-补充-</div>    下面是get版本的(Get请求)
+    (1)删除一个叫做test的别名(删除别名不要乱用啊XD):
+    <a href="/api/pgr/delAliasGet?alias=test">/api/pgr/delAliasGet?alias=test</a>
+    (2)删除一个别名id为123456的别名(别名也是有id的哦!):
+    <a href="/api/pgr/delAliasGet?id=123456">/api/pgr/delAliasGet?id=123456</a>
+</pre><hr class="hr-dashed2">
+</body>
+</html>
