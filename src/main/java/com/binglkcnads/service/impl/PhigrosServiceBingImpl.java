@@ -128,12 +128,14 @@ public class PhigrosServiceBingImpl implements PhigrosServiceBing {
             throw new OtherException(msg);
         }
         try {
-            String cache_str = null;
+            String cache_str = null,cache_str_wrapper = null;
             if(!Objects.isNull(alias)) {
                 if(phigrosMainMapper.contentWhetherExist(null, alias) != 0){
                     cache_str = "song_cache::SimpleKey [null," + alias + "]";
+                    cache_str_wrapper = "song_wrapper_cache::SimpleKey [null," + alias + "]";
                     phigrosMainMapper.delByAlias(alias, null);
                     redisService.deleteObject(cache_str);
+                    redisService.deleteObject(cache_str_wrapper);
                     log.info("别名删除别名,alias="+alias);
                 }else {
                     msg = "别名不存在哦";
@@ -143,8 +145,10 @@ public class PhigrosServiceBingImpl implements PhigrosServiceBing {
             }else {
                 if(phigrosMainMapper.contentWhetherExist(id, null) != 0){
                     final String temporary = phigrosMainMapper.findByAliasWhereId(id);
-                    redisService.deleteObject("song_cache::SimpleKey [null," + temporary + "]");
                     cache_str = "song_cache::SimpleKey [null," + temporary + "]";
+                    cache_str_wrapper = "song_wrapper_cache::SimpleKey [null," + temporary + "]";
+                    redisService.deleteObject(cache_str);
+                    redisService.deleteObject(cache_str_wrapper);
                     phigrosMainMapper.delByAlias(null, id);
                     log.info("id删除别名,id="+id);
                 }else {
@@ -348,10 +352,14 @@ public class PhigrosServiceBingImpl implements PhigrosServiceBing {
      * */
     private void clearPhiCacheTable(String alias, Integer id) {
         phigrosMainMapper.addByAlias(alias,id);
-        final String cache_str = "song_cache::SimpleKey [null," + alias + "]";
+        final String cache_str = "song_cache::SimpleKey [null," + alias + "]",
+             cache_str_wrapper = "song_wrapper_cache::SimpleKey [null," + alias + "]";
         final boolean hasDelete = redisService.deleteObject(cache_str);
+        final boolean hasDeleteWrapper = redisService.deleteObject(cache_str_wrapper);
         log.info("缓存清除成功->" + cache_str);
         log.info("是否清除上次的缓存->"+hasDelete);
+        log.info("封装缓存清除成功->" + cache_str_wrapper);
+        log.info("是否清除上次的封装缓存->"+hasDeleteWrapper);
         log.info("别名查询成功!");
         log.info("添加的别名为:"+alias+"(id:"+ id +")");
     }

@@ -37,6 +37,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {NoSuchAlgorithmException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> noSuchAlgorithm(NoSuchAlgorithmException e){
         log.error("无搜索算法异常");
         return ErrResult.failedWith(new Date(), 500,"无搜索算法异常");
@@ -44,12 +45,14 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {InvalidKeyException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Map<String,Object> invalidKey(InvalidKeyException e){
         log.error("密钥无效");
         return ErrResult.failedWith(new Date(), 401,"密钥无效");
     }
     @ExceptionHandler(value = {NullPointerException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> nullPointer(NullPointerException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 500,e.getMessage());
@@ -57,6 +60,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {AddContentFailureException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String,Object> addContentFailure(AddContentFailureException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 400,e.getMessage());
@@ -64,12 +68,14 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {DuplicateKeyException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String,Object> duplicateKey(DuplicateKeyException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 400,e.getMessage());
     }
     @ExceptionHandler(value = {MissingServletRequestParameterException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public Map<String,Object> missingServletRequestParameter(MissingServletRequestParameterException e){
         log.error("HTTP不可读!!");
         return ErrResult.failedWith(new Date(), 405,"没有传参数","怎么两手空空的来找我?");
@@ -77,6 +83,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {SignatureException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     public Map<String,Object> signature(SignatureException e){
         log.error("禁止访问!");
         return ErrResult.failedWith(new Date(), 403,"禁止访问","要是随便访问岂不是乱透了?");
@@ -84,6 +91,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {ManyParameterSelectionsException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public Map<String,Object> manyParameterSelections(ManyParameterSelectionsException e){
         log.error("参数选择过多!");
         return ErrResult.failedWith(new Date(), 405,"参数选择过多","选择太多是一种很贪心的表现啦");
@@ -91,6 +99,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {NotExistContentException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String,Object> notExistContent(NotExistContentException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 404,e.getMessage());
@@ -98,6 +107,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {UnknownException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String,Object> unknown(UnknownException e){
         log.error("发生未知错误!");
         return ErrResult.failedWith(new Date(), 400,"发生未知错误","希腊奶希腊奶,我真不知道这是发生了什么逆天的异常");
@@ -105,24 +115,28 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {OtherException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String,Object> other(OtherException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 400,e.getMessage());
     }
     @ExceptionHandler(value = {HttpMessageNotReadableException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> httpMessageNotReadable(HttpMessageNotReadableException e){
         log.error("HTTP不可读!!");
         return ErrResult.failedWith(new Date(), 500,"HTTP解析异常","解析出错了呜呜");
     }
     @ExceptionHandler(value = {IOException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> io(IOException e){
         log.error("IO流异常!!");
         return ErrResult.failedWith(new Date(), 500,"IO流异常");
     }
     @ExceptionHandler(value = {RuntimeException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> runtime(RuntimeException e){
         log.error("运行时异常");
         return ErrResult.failedWith(new Date(), 500,"运行时异常");
@@ -130,6 +144,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {NoSuchMethodError.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> noSuchMethod(NoSuchMethodError e){
         log.error("无搜索方法错误");
         return ErrResult.failedWith(new Date(), 500,"无搜索方法错误");
@@ -137,6 +152,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {NullParameterException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public Map<String,Object> nullParameter(NullParameterException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 405,e.getMessage());
@@ -144,6 +160,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {SerializationException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> serialization(SerializationException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 500,"redis序列化异常");
@@ -151,6 +168,7 @@ public class ExceptionClassBing {
 
     @ExceptionHandler(value = {IllegalArgumentException.class})
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String,Object> illegalArgument(IllegalArgumentException e){
         log.error(e.getMessage());
         return ErrResult.failedWith(new Date(), 500,"非法数据异常");
